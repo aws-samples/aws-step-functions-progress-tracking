@@ -75,7 +75,7 @@ To test Frontend on your local machine, you can deploy the React app locally. To
 
 ## How it works
 
-![Frontend](readme_assets/blog frontend overview.gif)
+![Frontend](readme_assets/blog_frontend_overview.gif)
 
 1. The Frontend asks you for Websocket endpoint URI. This is the value of WebSocketURI, that you've got from SAM template.yml deployment. Paste it into `Enter Websocket URI` field and click `Connect` button.
    The Frontend will connect to your previously deployed Backend. You can open developer tools in the browser and navigate to Networking tab, filter by `WS` (Websocket). You should see `Prod` Websocket connection open.
@@ -83,7 +83,7 @@ To test Frontend on your local machine, you can deploy the React app locally. To
 1. You can also trigger the state machine execution and observe progress messages by using other Websocket clients, like [Pie Socket](https://www.piesocket.com/websocket-tester). Simply enter your Websocket URI from WebSocketURI value and click connect. To start execution, specify the following message: `{ "action": "onOrder" }` and click `Send` button. The raw progress messages will appear below.
 1. Additionally, you can navigate to developer tools in your browser, open `Network` tab and observe raw messages coming to the client.
 
-![Dev Tools](readme_assets/blog dev tools.gif)
+![Dev Tools](readme_assets/blog_dev_tools.gif)
 
 
 ## Security
