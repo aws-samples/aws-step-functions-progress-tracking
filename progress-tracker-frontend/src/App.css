@@ -1,0 +1,92 @@
+.App {
+  text-align: center;
+}
+
+.WebsocketConnector-CardGroup {
+  justify-content: center;
+}
+
+.WebsocketConnector-Card {
+  max-width: 600px;
+  position: fixed;
+  top: 150px;
+}
+
+.WebsocketConnector-Form {
+  margin: 15px;
+}
+
+.WebsocketConnector-FormLabel {
+  font-size: 25px;
+}
+
+.WebsocketConnector-FormText {
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.WebsocketConnector-P1 {
+  margin: 0px;
+}
+
+.WebsocketConnector-P2 {
+  font-style: oblique;
+  margin: 0px;
+}
+
+.CardOrderLog-CardGroup {
+  justify-content: center;
+}
+
+.CardOrderLog-Card {
+  position: fixed;
+  top: 100px;
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 180px;
+  margin: 25px;
+}
+
+.CardOrderLog-CardHeader {
+  font-size: 20px;
+  color: black;
+}
+
+.CardOrderProgress-CardGroup {
+  justify-content: center;
+}
+
+.CardOrderProgress-Card {
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 180px;
+  top: 100px;
+  position: fixed;
+  margin: 25px;
+}
+
+.CardOrderProgress-Button {
+  width: 450px;
+  align-self: center;
+}
+
+.OrderingProgressBar-ProgressBar {
+  min-width: 450px;
+  margin: 25px;
+  min-height: 25px;
+  align-self: center;
+}
+
+.OrderingProgressBar-P {
+  font-size: large;
+  color: black;
+}
+
+.ProgressLog-Card {
+  margin: 50px;
+}
+
+.ProgressLog-ListGroupItem {
+  font-size: 15px;
+  text-align: left;
+}
