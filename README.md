@@ -2,8 +2,6 @@
 
 This project creates an AWS Step Functions, which mocks a mutli-step ordering process, and demonstrates how clients can monitor the progress via Amazon API Gateway Websocket.
 
-For more information, please refer to [this](https://<BLOGPOSTURL>) blog post.
-
 ![Diagram](readme_assets/diagram.png)
 
 ## Project structure
@@ -30,11 +28,11 @@ The project contains Backend and Frontend. You can deploy Backend only. The depl
 1. Open a terminal and create a new directory, which you will use to clone the repository from GitHub.
 1. Clone GitHub repository:
     ``` bash
-    git clone https://github.com/aws-samples/<REPOSITORY_NAME>
+    git clone https://github.com/aws-samples/aws-step-functions-progress-tracking.git
     ```
 1. Change directory to the cloned repository:
     ``` bash
-    cd <REPOSITORY_NAME>
+    cd aws-step-functions-progress-tracking
     ```
 1. Make sure that your terminal can access AWS resources. Use AWS SAM to deploy the backend resources:
     ``` bash
@@ -52,7 +50,7 @@ The project contains Backend and Frontend. You can deploy Backend only. The depl
 
 #### Option 1: Use hosted Frontend
 
-AWS provides you with hosted React-based Frontend. Simply open [this link](https://dev.d1az1a92svymk3.amplifyapp.com/).
+AWS provides you with hosted React-based Frontend. Simply open [this link](https://main.d3l6f007ftpjty.amplifyapp.com/).
 
 #### Option 2: Deploy frontend Frontend locally
 
