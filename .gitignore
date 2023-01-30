@@ -1,0 +1,27 @@
+# dependencies
+/progress-tracker-frontend/node_modules
+/progress-tracker-frontend/.pnp
+.pnp.js
+
+# testing
+/progress-tracker-frontend/coverage
+
+# production
+/progress-tracker-frontend/build
+
+# amplify
+/progress-tracker-frontend/amplify
+/progress-tracker-frontend/src/aws-exports.js
+
+# misc
+.aws-sam
+samconfig.toml
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
