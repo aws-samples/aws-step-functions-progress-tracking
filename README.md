@@ -21,7 +21,7 @@ This project contains Backend, which you can deploy with AWS SAM `template.yml`,
 
 ## Deployment instructions
 
-The project contains Backend and Frontend. You can deploy Backend only. The deployment of Frontend is optional. You can use a hosted Frontend for testing application [here]() and refer to the code in `progress-tracker-frontend` to understand how it works under the hood. Alternatively, you can deploy the React-based Frontend locally or to AWS.
+The project contains Backend and Frontend. You can deploy Backend only. The deployment of Frontend is optional. You can use a hosted Frontend for testing application [here](https://main.d3l6f007ftpjty.amplifyapp.com/) and refer to the code in `progress-tracker-frontend` to understand how it works under the hood. Alternatively, you can deploy the React-based Frontend locally or to AWS.
 
 ### Backend
 
