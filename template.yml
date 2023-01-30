@@ -211,12 +211,16 @@ Resources:
       FunctionName: !Ref MockGenerateLabelFunction
       Principal: apigateway.amazonaws.com
   
-
 ##### Ordering state machine #####
   OrderingStateMachine:
     Type: AWS::Serverless::StateMachine
     Properties:
-      Name: OrderingStateMachine
+      DefinitionUri: statemachine/statemachine.asl.json
+      DefinitionSubstitutions:
+        WebSocketApiEndpoint: !Join [ '.',[ !Ref ProgressTrackingWebsocket, execute-api, !Ref 'AWS::Region', amazonaws.com ] ]
+        MockGenerateLabelFunctionArn: !GetAtt MockGenerateLabelFunction.Arn
+        ReportProgressFunctionArn: !GetAtt ReportProgressFunction.Arn
+      Type: STANDARD
       Policies:
         - Statement:
             - Effect: Allow
@@ -230,117 +234,8 @@ Resources:
               Resource:
                 - !GetAtt ReportProgressFunction.Arn
                 - !GetAtt MockGenerateLabelFunction.Arn
-      Definition: 
-        Comment: State machine for mocking waiting times and demonstrating progress reporting
-        StartAt: 'Report: Workflow started'
-        States:
-          'Report: Workflow started':
-            Type: Task
-            Resource: arn:aws:states:::apigateway:invoke
-            ResultPath: $.Params
-            Parameters:
-              ApiEndpoint: !Join [ '.',[ !Ref ProgressTrackingWebsocket, execute-api, !Ref 'AWS::Region', amazonaws.com ] ]
-              Method: POST
-              Stage: !Ref ApiStageName
-              Path.$: States.Format('/@connections/{}', $.ConnectionId)
-              RequestBody:
-                Message: 🥁 Workflow started
-                Progress: 10
-              AuthType: IAM_ROLE
-            Next: 'Mock: Inventory check'
-          'Mock: Inventory check':
-            Type: Wait
-            Seconds: 2
-            Next: 'Report: Inventory check complete'
-          'Report: Inventory check complete':
-            Type: Task
-            Resource: arn:aws:states:::apigateway:invoke
-            ResultPath: $.Params
-            Parameters:
-              ApiEndpoint: !Join [ '.',[ !Ref ProgressTrackingWebsocket, execute-api, !Ref 'AWS::Region', amazonaws.com ] ]
-              Method: POST
-              Stage: !Ref ApiStageName
-              Path.$: States.Format('/@connections/{}', $.ConnectionId)
-              RequestBody:
-                Message: 📋 Inventory check complete
-                Progress: 25
-              AuthType: IAM_ROLE
-            Next: 'Mock: Generate electronic label from delivery service'
-          'Mock: Generate electronic label from delivery service':
-            Type: Task
-            Resource: arn:aws:states:::lambda:invoke
-            OutputPath: $.Payload
-            Parameters:
-              Payload.$: $
-              FunctionName: !GetAtt MockGenerateLabelFunction.Arn
-            Retry:
-              - ErrorEquals:
-                  - Lambda.ServiceException
-                  - Lambda.AWSLambdaException
-                  - Lambda.SdkClientException
-                  - Lambda.TooManyRequestsException
-                IntervalSeconds: 2
-                MaxAttempts: 6
-                BackoffRate: 2
-            Next: 'Report: Label generation complete'
-          'Report: Label generation complete':
-            Type: Task
-            Resource: arn:aws:states:::lambda:invoke
-            OutputPath: $.Payload
-            Parameters:
-              Payload:
-                Message: 🏷 Postage label generated
-                Progress: 50
-                ConnectionId.$: $.ConnectionId
-              FunctionName: !GetAtt ReportProgressFunction.Arn
-            Retry:
-            - ErrorEquals:
-                - Lambda.ServiceException
-                - Lambda.AWSLambdaException
-                - Lambda.SdkClientException
-                - Lambda.TooManyRequestsException
-              IntervalSeconds: 2
-              MaxAttempts: 6
-              BackoffRate: 2
-            Next: 'Mock: Move to delivery'
-          'Mock: Move to delivery':
-            Type: Wait
-            Seconds: 2
-            Next: 'Report: Moved to delivery'
-          'Report: Moved to delivery':
-            Type: Task
-            Resource: arn:aws:states:::apigateway:invoke
-            ResultPath: $.Params
-            Parameters:
-              ApiEndpoint: !Join [ '.',[ !Ref ProgressTrackingWebsocket, execute-api, !Ref 'AWS::Region', amazonaws.com ] ]
-              Method: POST
-              Stage: !Ref ApiStageName
-              Path.$: States.Format('/@connections/{}', $.ConnectionId)
-              RequestBody:
-                Message: 🚚 Moved to delivery
-                Progress: 75
-              AuthType: IAM_ROLE
-            Next: 'Report: Workflow finished'
-          'Report: Workflow finished':
-            Type: Task
-            Resource: arn:aws:states:::apigateway:invoke
-            ResultPath: $.Params
-            Parameters:
-              ApiEndpoint: !Join [ '.',[ !Ref ProgressTrackingWebsocket, execute-api, !Ref 'AWS::Region', amazonaws.com ] ]
-              Method: POST
-              Stage: !Ref ApiStageName
-              Path.$: States.Format('/@connections/{}', $.ConnectionId)
-              RequestBody:
-                Message: 🎯 Finished successfully
-                Progress: 100
-              AuthType: IAM_ROLE
-            End: true
               
 Outputs:
-  ConnectionsTableArn:
-    Description: "Connections table ARN"
-    Value: !GetAtt ConnectionsTable.Arn
-
   WebSocketURI:
     Description: "The WSS Protocol URI to connect to. Copy and paste to the field on the frontend."
     Value: !Join [ '', [ 'wss://', !Ref ProgressTrackingWebsocket, '.execute-api.',!Ref 'AWS::Region','.amazonaws.com/',!Ref 'ApiStageName'] ]
