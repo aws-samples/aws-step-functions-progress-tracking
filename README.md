@@ -44,7 +44,7 @@ The project contains Backend and Frontend. You can deploy Backend only. The depl
     * Allow SAM CLI to create IAM roles with the required permissions.
 
    Once you have finished the setup, SAM CLI will save the specified settings in configuration file samconfig.toml so you can use `sam deploy` for quicker deployments.
-1. Note the WebSocketURI value in the output of `sam deploy --guided` command. You will need this value for the Frontend later.
+1. Note the WebSocketURL value in the output of `sam deploy --guided` command. You will need this value for the Frontend later.
 
 ### Frontend
 
@@ -75,10 +75,10 @@ To test Frontend on your local machine, you can deploy the React app locally. To
 
 ![Frontend](readme_assets/blog_frontend_overview.gif)
 
-1. The Frontend asks you for Websocket endpoint URI. This is the value of WebSocketURI, that you've got from SAM template.yml deployment. Paste it into `Enter Websocket URI` field and click `Connect` button.
+1. The Frontend asks you for Websocket endpoint URL. This is the value of WebSocketURL, that you've got from SAM template.yml deployment. Paste it into `Enter Websocket URL` field and click `Connect` button.
    The Frontend will connect to your previously deployed Backend. You can open developer tools in the browser and navigate to Networking tab, filter by `WS` (Websocket). You should see `Prod` Websocket connection open.
 1. Click `Send Order` button to invoke the state machine in AWS Step Functions. You will see messages appear below the `Send Order` button coming from different stages of the state machine. Alternatively, you can observe raw messages in developer tools Networking tab of your browser. The messages will appear under `Prod` Websocket.
-1. You can also trigger the state machine execution and observe progress messages by using other Websocket clients, like [Pie Socket](https://www.piesocket.com/websocket-tester). Simply enter your Websocket URI from WebSocketURI value and click connect. To start execution, specify the following message: `{ "action": "onOrder" }` and click `Send` button. The raw progress messages will appear below.
+1. You can also trigger the state machine execution and observe progress messages by using other Websocket clients, like [Pie Socket](https://www.piesocket.com/websocket-tester). Simply enter your Websocket URL from WebSocketURL value and click connect. To start execution, specify the following message: `{ "action": "onOrder" }` and click `Send` button. The raw progress messages will appear below.
 1. Additionally, you can navigate to developer tools in your browser, open `Network` tab and observe raw messages coming to the client.
 
 ![Dev Tools](readme_assets/blog_dev_tools.gif)

@@ -11,13 +11,13 @@ function WebsocketConnector(props) {
         <CardGroup className="WebsocketConnector-CardGroup">
             <Card className="WebsocketConnector-Card">
                 <Form onSubmit={connectToWs} className="WebsocketConnector-Form">
-                    <Form.Group className="mb-3" controlId="formWebsocketUri">
-                        <Form.Label className="WebsocketConnector-FormLabel">Enter Websocket URI</Form.Label>
-                        <Form.Control type="text" placeholder="Websocket URI" />
+                    <Form.Group className="mb-3" controlId="formWebsocketUrl">
+                        <Form.Label className="WebsocketConnector-FormLabel">Enter Websocket URL</Form.Label>
+                        <Form.Control type="text" placeholder="Websocket URL" />
                         <Form.Text className="WebsocketConnector-FormText">
-                            <p className="WebsocketConnector-P1">Enter your Websocket URI:</p>
+                            <p className="WebsocketConnector-P1">Enter your Websocket URL:</p>
                             <p className="WebsocketConnector-P2">wss://API_ID.execute-api.AWS_Region.amazonaws.com/STAGE_NAME'.</p>
-                            <p>Find this information in SAM deployment output under key WebSocketURI.</p>
+                            <p>Find this information in SAM deployment output under key WebSocketURL.</p>
                         </Form.Text>
                     </Form.Group>
                     <Button variant="primary" type="submit">

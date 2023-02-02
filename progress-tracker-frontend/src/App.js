@@ -18,9 +18,9 @@ function App() {
 
   const connectToWs = (event) => {
     event.preventDefault();
-    if (event.target.elements.formWebsocketUri.value) {
-      const wsUri = event.target.elements.formWebsocketUri.value;
-      const newWebsocket = new WebSocket(wsUri);
+    if (event.target.elements.formWebsocketUrl.value) {
+      const wsUrl = event.target.elements.formWebsocketUrl.value;
+      const newWebsocket = new WebSocket(wsUrl);
       setWs(newWebsocket);
 
       newWebsocket.onopen = () => {
