@@ -2,6 +2,8 @@
 
 This project creates an AWS Step Functions, which mocks a mutli-step ordering process, and demonstrates how clients can monitor the progress via Amazon API Gateway Websocket.
 
+**[This blog post](https://aws.amazon.com/blogs/compute/implementing-reactive-progress-tracking-for-aws-step-functions/) explains the sample in depth.**
+
 ![Diagram](readme_assets/diagram.png)
 
 ## Project structure
