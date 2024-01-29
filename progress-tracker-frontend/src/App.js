@@ -60,7 +60,7 @@ function App() {
 
   useEffect(() => {
     if (statusMessage) {
-      setStatusMessages([...statusMessages, statusMessage]);
+      setStatusMessages(s => [...s, statusMessage]);
     }
   }, [statusMessage]);
 

@@ -15,7 +15,11 @@
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.23.4",
     "react-scripts": "^5.0.1"
+  },
+  "resolutions": {
+    "postcss": "8.4.33"
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
