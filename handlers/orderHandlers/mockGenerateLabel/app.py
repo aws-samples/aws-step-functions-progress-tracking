@@ -4,7 +4,7 @@ import time
 import json
 
 client = boto3.client('lambda')
-lambda_func_name = os.environ.get('REPORT_PROGRESS_LAMBDA')
+lambda_func_name = os.environ['REPORT_PROGRESS_LAMBDA']
 
 
 def handler(event, context):

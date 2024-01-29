@@ -4,8 +4,8 @@ import json
 
 ddb_client = boto3.client('dynamodb', region_name=os.environ['AWS_REGION'])
 
-table_name = os.environ.get('TABLE_NAME')
-api_url = os.environ.get('API_URL')
+table_name = os.environ['TABLE_NAME']
+api_url = os.environ['API_URL']
 
 def handler(event, context):
     print(event)
