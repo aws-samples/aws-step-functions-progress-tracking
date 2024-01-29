@@ -2,7 +2,7 @@ import boto3
 import os
 
 ddb = boto3.client('dynamodb')
-table_name = os.environ.get('TABLE_NAME')
+table_name = os.environ['TABLE_NAME']
 
 def handler(event, context):
     connection_id = event['requestContext']['connectionId']

@@ -3,7 +3,7 @@ import os
 import json
 
 client = boto3.client('stepfunctions')
-stepfunctions_arn = os.environ.get('STEP_FUNCTIONS_ARN')
+stepfunctions_arn = os.environ['STEP_FUNCTIONS_ARN']
 
 def handler(event, context):
     connectionId = event['requestContext']['connectionId']
