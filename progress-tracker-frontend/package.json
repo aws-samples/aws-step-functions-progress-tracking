@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.2.3",
+    "@testing-library/jest-dom": "^6.3.0",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2",
+    "bootstrap": "^5.3.2",
     "import": "^0.0.6",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.0",
+    "react-bootstrap": "^2.10.0",
     "react-dom": "^18.2.0",
-    "react-use-websocket": "^4.2.0",
-    "web-vitals": "^2.1.4"
+    "react-use-websocket": "^4.5.0",
+    "web-vitals": "^3.5.2"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
