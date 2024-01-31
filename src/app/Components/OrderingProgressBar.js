@@ -1,7 +1,6 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-import '../App.css';
 
 function OrderingProgressBar(props) {
   const { progressPercentage, statusMessage } = props;

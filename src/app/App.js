@@ -1,5 +1,6 @@
+'use client'
+
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import './App.css';
 import WebsocketConnector from "./Components/WebsocketConnector";
 import CardOrderProgress from "./Components/CardOrderProgress";
 import CardOrderLog from "./Components/CardOrderLog";
