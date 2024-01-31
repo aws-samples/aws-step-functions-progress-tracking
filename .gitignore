@@ -10,8 +10,8 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+/progress-tracker-frontend/.next/
+/progress-tracker-frontend/out/
 
 # production
 /build

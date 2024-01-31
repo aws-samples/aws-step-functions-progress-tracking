@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Audit packages
-        run: npm --prefix "progress-tracker-frontend" audit --audit-level moderate --production
+        run: npm --prefix "progress-tracker-frontend" audit --omit=dev
         env:
           CI: true
 
