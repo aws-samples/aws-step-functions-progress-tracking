@@ -39,12 +39,10 @@
 }
 
 .CardOrderLog-Card {
-  position: fixed;
-  top: 100px;
+  margin-top: 325px;
   min-width: 250px;
   max-width: 500px;
   min-height: 180px;
-  margin: 25px;
 }
 
 .CardOrderLog-CardHeader {
