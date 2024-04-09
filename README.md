@@ -78,7 +78,7 @@ To test Frontend on your local machine, you can deploy the React app locally. To
    
 1. Start the Frontend:
     ``` bash
-    npx serve@latest out
+    npm run dev
     ```
    The command will open React app in your default browser. If it does not happen automatically, navigate to http://localhost:3000/ manually.
 
