@@ -66,9 +66,19 @@ To test Frontend on your local machine, you can deploy the React app locally. To
     ``` bash
     cd progress-tracker-frontend
     ```
+1. Install the Dependencies
+    ``` bash
+    npm install
+    ```
+
+1. Build the Project
+    ``` bash
+    npm run build
+    ```
+   
 1. Start the Frontend:
     ``` bash
-    npm start
+    npm run dev
     ```
    The command will open React app in your default browser. If it does not happen automatically, navigate to http://localhost:3000/ manually.
 
