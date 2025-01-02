@@ -6,6 +6,7 @@ Description: >
   SAM Template for step-functions-progress-tracking-app to demonstrate progress tracking of AWS Step Functions.
   It implements Websocket API with management Lambda functions and DynamoDB, mock functions to emulate long
   running tasks, and a state machine implementation.
+  (uksb-bji0u9oprs)
 
 Globals:
   Function:
