@@ -10,7 +10,7 @@ jobs:
   cfn-nag:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: stelligent/cfn_nag@master
       with:
         input_path: template.yml
@@ -18,9 +18,8 @@ jobs:
     name: npm audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Audit packages
         run: npm --prefix "progress-tracker-frontend" audit --omit=dev
         env:
           CI: true
-
