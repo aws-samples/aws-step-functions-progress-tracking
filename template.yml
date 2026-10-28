@@ -10,7 +10,7 @@ Description: >
 
 Globals:
   Function:
-    Runtime: python3.9
+    Runtime: python3.14
     MemorySize: 128
     Timeout: 15
 

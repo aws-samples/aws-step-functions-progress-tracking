@@ -2,6 +2,9 @@
   "name": "aws-step-functions-progress-tracking-next",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,13 +12,9 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "next": "^16.2.6",
-    "react": "^18.3.1",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^18.3.1",
-    "react-use-websocket": "^4.13.0"
-  },
-  "overrides": {
-    "postcss": "^8.5.10"
+    "react-dom": "^19.3.1"
   }
 }
