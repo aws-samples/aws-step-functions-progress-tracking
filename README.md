@@ -17,8 +17,8 @@ This project contains Backend, which you can deploy with AWS SAM `template.yml`,
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) installed and configured
 * [Git Installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [AWS Serverless Application Model](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) (AWS SAM) installed
-* [Python](https://www.python.org/downloads/) for changing AWS Lambda functions' code
-* [NPM](https://www.npmjs.com/get-npm) for changing the frontend code (React)
+* [Python 3.14](https://www.python.org/downloads/), the AWS Lambda runtime version, for `sam build`. Without a local Python 3.14, run `sam build --use-container` (requires Docker)
+* [Node.js](https://nodejs.org/) 20.9 or later (Node.js 24 LTS recommended) with npm for changing the frontend code (Next.js and React)
 
 
 ## Deployment instructions

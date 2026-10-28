@@ -2,7 +2,7 @@ name: Continuous integration
 
 on:
   push:
-    branches: [ main]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -13,16 +13,52 @@ jobs:
   cfn-nag:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: stelligent/cfn_nag@master
-      with:
-        input_path: template.yml
-  scan:
-    name: npm audit
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: stelligent/cfn_nag@97717cb8d6cf9659d9c51d269b00fb24427bef18 # v0.8.10
+        with:
+          input_path: template.yml
+
+  cfn-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - name: Lint SAM template
+        run: |
+          pip install cfn-lint
+          cfn-lint template.yml
+
+  handlers:
+    name: Lambda handlers (Python 3.14)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - name: Compile handlers
+        run: python -W error -m py_compile handlers/*/*/app.py
+
+  frontend:
+    name: Frontend build and npm audit
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: progress-tracker-frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: progress-tracker-frontend/package-lock.json
+      - name: Install dependencies
+        run: npm ci
       - name: Audit packages
-        run: npm --prefix "progress-tracker-frontend" audit --omit=dev
+        run: npm audit --omit=dev
+      - name: Build
+        run: npm run build
         env:
           CI: true
