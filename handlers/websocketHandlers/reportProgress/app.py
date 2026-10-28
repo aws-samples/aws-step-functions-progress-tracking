@@ -20,12 +20,10 @@ def handler(event, context):
             ConnectionId=connection_id,
             Data=bytes(json.dumps(event), 'utf-8')
         )
-    except apigw_management_api_client.exceptions.GoneException as e:
-        if e.response['Error']['Code'] == 410:
-            print(f"Found stale connection, deleting {connection_id}")
-            ddb_client.delete_item(TableName=table_name, Key={'connectionId': {'S': connection_id}})
-        else:
-            raise e
+    except apigw_management_api_client.exceptions.GoneException:
+        # API Gateway returns HTTP 410 (GoneException) when the client has disconnected.
+        print(f"Found stale connection, deleting {connection_id}")
+        ddb_client.delete_item(TableName=table_name, Key={'connectionId': {'S': connection_id}})
 
     return {
         'ConnectionId': event['ConnectionId']

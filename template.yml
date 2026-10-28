@@ -219,6 +219,7 @@ Resources:
       DefinitionUri: statemachine/statemachine.asl.json
       DefinitionSubstitutions:
         WebSocketApiEndpoint: !Join [ '.',[ !Ref ProgressTrackingWebsocket, execute-api, !Ref 'AWS::Region', amazonaws.com ] ]
+        ApiStageName: !Ref ApiStageName
         MockGenerateLabelFunctionArn: !GetAtt MockGenerateLabelFunction.Arn
         ReportProgressFunctionArn: !GetAtt ReportProgressFunction.Arn
       Type: STANDARD
