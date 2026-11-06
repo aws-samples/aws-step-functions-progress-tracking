@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "next": "^16.4.3",
+    "next": "^16.4.5",
     "react": "^19.3.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.3.1"
